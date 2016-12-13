@@ -12,11 +12,10 @@
   },
   "keywords": [
     "redux",
-    "rest-api",
-    "rest",
-    "rest-client",
-    "rest-adapter",
-    "redux-rest"
+    "localstorage-api",
+    "localstorage",
+    "localstorage-adapter",
+    "redux-localstorage"
   ],
   "scripts": {
     "build": "$(npm bin)/babel src -d lib",
