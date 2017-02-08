@@ -10,7 +10,7 @@ Localstorage adapter for redux
 
 ##Setup
 
-###known-localstorage-api.js
+###your/known-localstorage-api.js
 
 ```js
 import LocalStorageApi from 'redux-localstorage-adapter';
@@ -26,25 +26,43 @@ knownLocalStorageKeys.forEach(key=> {
   knownApi[key] = new LocalStorageApi(key);
 });
 
-export default knownApi;
+export default knownLoacalStorageApi;
 ```
 
-###localstorage-reducer.js
+###your/localstorage-reducer.js
 
 ```js
-export default combineReducers(_.mapValues(knownApi, api => api.reducer));
+import knownLocalStorageApi from 'your/known-localstorage-api';
+
+export default combineReducers(_.mapValues(knownLocalStorageApi, api => api.reducer));
+
 ```
 
-###localstorage-actions.js
+###your/index-reducer.js
 
 ```js
-export default _.mapValues(knownApi, api => api.actions);
+import localStorage from 'your/localstorage-reducer';
+
+export default combineReducers({
+  localStorage
+  //..
+});
+```
+
+###your/localstorage-actions.js
+
+```js
+import knownLocalStorageApi from 'your/known-localstorage-api';
+
+export default _.mapValues(knownLocalStorageApi, api => api.actions);
 ```
 
 ##Usage
 
-###some-redux-container.js
+###your/some-redux-container.js
 ```js
+import localStorageActions from 'your/localstorage-actions';
+
 class SomeComponent extends BaseComponent {
 /...
  onCarIconClick = ()=> {
@@ -58,7 +76,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  setFire: localStorageAction.FIRE_THEME_ENABLED.setItem
+  setFire: localStorageActions.FIRE_THEME_ENABLED.setItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SomeComponent);
