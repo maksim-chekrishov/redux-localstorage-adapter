@@ -3,6 +3,11 @@ Localstorage adapter for redux
 
 [![npm version](https://badge.fury.io/js/redux-localstorage-adapter.svg)](https://badge.fury.io/js/redux-localstorage-adapter)
 
+##Main points
+- Keep your components pure.
+- Sync localstorage and store and use actions to change it.
+
+
 ##Setup
 
 ###known-localstorage-api.js
@@ -58,3 +63,7 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(SomeComponent);
 ```
+
+##Enjoy redux flow
+
+![Image devTools](https://raw.githubusercontent.com/maksim-chekrishov/redux-localstorage-adapter/master/readme-src/dev-tools.png)
