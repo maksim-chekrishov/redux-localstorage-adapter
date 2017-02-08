@@ -1,7 +1,7 @@
 # redux-localstorage-adapter
 Localstorage adapter for redux
 
-[![npm version](https://badge.fury.io/js/redux-rest-adapter.svg)](https://badge.fury.io/js/redux-localstorage-adapter)
+[![npm version](https://badge.fury.io/js/redux-localstorage-adapter.svg)](https://badge.fury.io/js/redux-localstorage-adapter)
 
 ##Setup
 
