@@ -82,6 +82,6 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(SomeComponent);
 ```
 
-##Enjoy redux flow
+##Enjoy the redux flow
 
 ![Image devTools](https://raw.githubusercontent.com/maksim-chekrishov/redux-localstorage-adapter/master/readme-src/dev-tools.png)
