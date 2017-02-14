@@ -27,7 +27,7 @@ export default class LocalStorageApi {
 
   _getItem() {
     return this._isNode()
-      ? ''
+      ? null
       : JSON.parse(window.localStorage.getItem(this.key));
   }
 
