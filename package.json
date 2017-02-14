@@ -1,6 +1,6 @@
 {
   "name": "redux-localstorage-adapter",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Localstorage adapter for redux",
   "main": "lib/index.js",
   "repository": {
