@@ -2,8 +2,6 @@
  * Created by m.chekryshov on 15.06.16.
  */
 
-const isNode = typeof get(process, 'versions.node') !== 'undefined';
-
 export default class LocalStorageApi {
   /**
    * Constructor
@@ -18,14 +16,23 @@ export default class LocalStorageApi {
     this.actions = this.configureActions();
   }
 
+  _isNode() {
+    let isNode = false;
+
+    if (!!process && !!process.versions && typeof process.versions.node !== 'undefined') {
+      isNode = true;
+    }
+    return isNode;
+  }
+
   _getItem() {
-    return isNode
-      ? undefined
+    return this._isNode()
+      ? ''
       : JSON.parse(window.localStorage.getItem(this.key));
   }
 
   _setItem(item) {
-    return isNode
+    return this._isNode()
       ? undefined
       : window.localStorage.setItem(this.key, JSON.stringify(item));
   }
@@ -56,9 +63,8 @@ export default class LocalStorageApi {
   }
 
   configureReducer() {
-    return (state = this._getItem(), action = {}) =
-  >
-    {
+    return (state = this._getItem(), action = {}) => {
+      debugger;
       switch (action.type) {
         case this.ActionsTypes.GET:
           return this._getItem();
@@ -70,7 +76,6 @@ export default class LocalStorageApi {
         default:
           return state;
       }
-    }
-    ;
+    };
   }
 }
