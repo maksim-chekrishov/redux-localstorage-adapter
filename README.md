@@ -26,13 +26,14 @@ knownLocalStorageKeys.forEach(key=> {
   knownApi[key] = new LocalStorageApi(key);
 });
 
-export default knownLoacalStorageApi;
+export default knownApi;
 ```
 
 ###your/localstorage-reducer.js
 
 ```js
 import knownLocalStorageApi from 'your/known-localstorage-api';
+import {combineReducers} from 'redux';
 
 export default combineReducers(_.mapValues(knownLocalStorageApi, api => api.reducer));
 
@@ -42,6 +43,7 @@ export default combineReducers(_.mapValues(knownLocalStorageApi, api => api.redu
 
 ```js
 import localStorage from 'your/localstorage-reducer';
+import {combineReducers} from 'redux';
 
 export default combineReducers({
   localStorage

@@ -1,6 +1,9 @@
 /**
  * Created by m.chekryshov on 15.06.16.
  */
+
+const isNode = typeof get(process, 'versions.node') !== 'undefined';
+
 export default class LocalStorageApi {
   /**
    * Constructor
@@ -16,11 +19,15 @@ export default class LocalStorageApi {
   }
 
   _getItem() {
-    return JSON.parse(window.localStorage.getItem(this.key));
+    return isNode
+      ? undefined
+      : JSON.parse(window.localStorage.getItem(this.key));
   }
 
   _setItem(item) {
-    return window.localStorage.setItem(this.key, JSON.stringify(item));
+    return isNode
+      ? undefined
+      : window.localStorage.setItem(this.key, JSON.stringify(item));
   }
 
   configureActionsTypes() {
@@ -49,7 +56,9 @@ export default class LocalStorageApi {
   }
 
   configureReducer() {
-    return (state = this._getItem(), action = {})=> {
+    return (state = this._getItem(), action = {}) =
+  >
+    {
       switch (action.type) {
         case this.ActionsTypes.GET:
           return this._getItem();
@@ -61,6 +70,7 @@ export default class LocalStorageApi {
         default:
           return state;
       }
-    };
+    }
+    ;
   }
 }
