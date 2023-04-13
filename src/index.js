@@ -64,7 +64,6 @@ export default class LocalStorageApi {
 
   configureReducer() {
     return (state = this._getItem(), action = {}) => {
-      debugger;
       switch (action.type) {
         case this.ActionsTypes.GET:
           return this._getItem();
